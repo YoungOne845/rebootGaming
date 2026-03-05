@@ -10,6 +10,22 @@ body {
   overflow-x: hidden;
 }
 
+/* Full-screen background image (place your generated image at: /public/bg-cyberpunk.jpg)
+   The image is combined with a dark gradient overlay to keep text readable. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* sit behind page content */
+  background-image: linear-gradient(rgba(2,6,23,0.55), rgba(2,6,23,0.65)), url('/bg-cyberpunk.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: contrast(1.02) saturate(1.05);
+  pointer-events: none;
+}
+
 /* Fading Cyberpunk Grid */
 .bg-grid {
   position: absolute;
@@ -17,7 +33,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 0; /* above the background image, below main content (main content uses z-10) */
   background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(30, 144, 255, 0.07) 1px, transparent 1px),
@@ -29,8 +45,6 @@ body {
 
 /* Frosted Glass Effect for Cards */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03); /* keep slightly darker for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
